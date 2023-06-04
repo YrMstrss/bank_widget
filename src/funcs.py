@@ -49,22 +49,23 @@ def format_date(date: str) -> str:
     return '.'.join(date_list[::-1])
 
 
-def mask_from_amount(from_amount: str) -> str:
+def mask_amount(amount: str) -> str:
     """
-    Маскирует номер счета отправителя
-    :param from_amount: Счет отправителя
-    :return: Замаскированный счет отправителя
+    Маскирует номер счета
+    :param amount: Номер счета
+    :return: Замаскированный номер счета
     """
-    pass
+    if 'Счет' in amount:
+        amount_list = amount.split(' ')
+        return amount_list[0] + ' **' + amount_list[1][-4:]
+    else:
+        amount_list = amount.split(' ')
+        masked_card_number = amount_list[-1][0:4] + ' ' + amount_list[-1][4:6] + '** **** ' + amount_list[-1][12:16]
+        if len(amount_list) == 2:
+            return amount_list[0] + ' ' + masked_card_number
+        if len(amount_list) == 3:
+            return amount_list[0] + ' ' + amount_list[1] + ' ' + masked_card_number
 
-
-def mask_to_amount(to_amount: str) -> str:
-    """
-     Маскирует номер счета получателя
-    :param to_amount: Счет получателя
-    :return: Замаскированный счет получателя
-    """
-    pass
 
 
 def get_message(operation: dict) -> str:
