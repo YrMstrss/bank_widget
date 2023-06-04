@@ -1,9 +1,10 @@
 import pytest
+import os
 
 
 @pytest.fixture
 def file():
-    return os.path.join(os.path.dirname(__file__), 'test')
+    return os.path.join(os.path.dirname(__file__), 'test.json')
 
 
 @pytest.fixture

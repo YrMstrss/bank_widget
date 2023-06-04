@@ -6,7 +6,10 @@ def get_data_from_json(file_name):
     :param file_name: Имя файла из которого получаются данные
     :return: Список словарей с данными
     """
-    pass
+    with open(file_name, encoding='utf-8') as f:
+        data = json.load(f)
+
+    return data
 
 
 def get_executed_operations(operations_list: list[dict]) -> list[dict]:
