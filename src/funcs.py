@@ -45,7 +45,8 @@ def format_date(date: str) -> str:
     :param date: Дата и время операции
     :return: Дата операции в заданном формате
     """
-    pass
+    date_list = date.split('T')[0].split('-')
+    return '.'.join(date_list[::-1])
 
 
 def mask_from_amount(from_amount: str) -> str:
