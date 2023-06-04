@@ -32,11 +32,12 @@ def get_executed_operations(operations_list: list[dict]) -> list[dict]:
 
 def sort_operations(operations_list: list[dict]) -> list[dict]:
     """
-    Сортирует операции по дате оставляя 5 последних
+    Сортирует операции по дате
     :param operations_list: Список операций
     :return: Список операций отсортированный по дате
     """
-    pass
+    sorted_operations = sorted(operations_list, key=lambda x: x['date'], reverse=True)
+    return sorted_operations
 
 def format_date(date: str) -> str:
     """
