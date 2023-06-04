@@ -74,4 +74,18 @@ def get_message(operation: dict) -> str:
     :param operation: Словарь с данными по операции
     :return: Сообщение пользователю
     """
-    pass
+    date = format_date(operation['date'])
+    description = operation['description']
+    if 'from' not in operation.keys():
+        from_account = 'Счет отправителя неизвестен'
+    else:
+        from_account = mask_amount(operation['from'])
+    to_account = mask_amount(operation['to'])
+    amount = operation['operationAmount']['amount']
+    currency = operation['operationAmount']['currency']['name']
+
+    first_line = date + ' ' + description + ' \n'
+    second_line = from_account + ' -> ' + to_account + ' \n'
+    third_line = amount + ' ' + currency + ' \n'
+
+    return ''.join([first_line, second_line, third_line])
