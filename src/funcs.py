@@ -18,7 +18,16 @@ def get_executed_operations(operations_list: list[dict]) -> list[dict]:
     :param operations_list: Список словарей со всеми операциями
     :return: Список словарей с успешными операциями
     """
-    pass
+    executed_operations = []
+    for operation in operations_list:
+        if 'state' in operation.keys():
+            if operation['state'] == 'EXECUTED':
+                executed_operations.append(operation)
+        else:
+            continue
+
+    return executed_operations
+
 
 
 def sort_operations(operations_list: list[dict]) -> list[dict]:
